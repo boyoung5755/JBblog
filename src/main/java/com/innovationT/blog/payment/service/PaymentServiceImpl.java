@@ -1,5 +1,7 @@
 package com.innovationT.blog.payment.service;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
@@ -28,9 +30,15 @@ public class PaymentServiceImpl implements PaymentService{
 		payment.setPgType(String.valueOf(payload.get("pgType")));
 		payment.setProductName(String.valueOf(payload.get("productName")));
 		payment.setPaidAmount(10);
+		payment.setPaidDate(LocalDateTime.now());
 		
 		paymentRepository.save(payment);
 		
+	}
+
+	@Override
+	public List<Payment> getAllPayments() {
+		return paymentRepository.findAll();
 	}
 
 }
