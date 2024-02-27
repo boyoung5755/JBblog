@@ -76,7 +76,7 @@ public class BoardController {
 	
 	
 	
-	//댓글 등록하기
+	//댓글 삭제하기
 	@PostMapping("/deleteComm")
 	@ResponseBody
     public Map<String, String> deleteComm(
