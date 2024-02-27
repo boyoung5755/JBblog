@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}"
+      layout:fragment="content"
+>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">나의 결제 목록</h1>
+  </div>
+
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table card-table">
+        <colgroup>
+          <col width="10%" />
+          <col width="35%" />
+          <col width="25%" />
+          <col width="15%" />
+          <col width="15%" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th>NO</th>
+                <th>결제상품</th>
+                <th>결제일</th>
+                <th>결제금액</th>
+                <th>결제수단</th>
+            </tr>
+        </thead>
+        <tbody id="" class="table-border-bottom-0">
+            <tr th:each="payment, stat:${payment}"> 
+              <td th:text="${payment.payNo}"></td>
+              <td th:text="${payment.productName}"></td>
+              <td th:text="${payment.paidDate}"></td>
+              <td th:text="${payment.paidAmount}"></td>
+              <td th:text="${payment.pgProvider}"></td>
+            </tr>
+        </tbody>
+      </table>
+    </div>  
+  </div>
+
+	
+</body>
+</html>
