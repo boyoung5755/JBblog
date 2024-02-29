@@ -18,7 +18,7 @@ public class PaymentServiceImpl implements PaymentService{
 	private final PaymentRepository paymentRepository;
 
 	@Override
-	public void savePayment(Map<String, Object> payload) {
+	public String savePayment(Map<String, Object> payload) {
 		
 		Payment payment = new Payment();
 		
@@ -29,12 +29,14 @@ public class PaymentServiceImpl implements PaymentService{
 		payment.setPgProvider(String.valueOf(payload.get("pgProvider")));
 		payment.setPgType(String.valueOf(payload.get("pgType")));
 		payment.setProductName(String.valueOf(payload.get("productName")));
-		payment.setPaidAmount(10);
+		payment.setPaidAmount((int)payload.get("paidAmount"));
 		payment.setPaidDate(LocalDateTime.now());
 		
 		paymentRepository.save(payment);
 		
+		return  paymentRepository.searchID(String.valueOf(payload.get("merchantUid"))) >= 1 ? "Y" : "N";
 	}
+	
 
 	@Override
 	public List<Payment> getAllPayments() {

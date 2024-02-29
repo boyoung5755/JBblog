@@ -19,13 +19,6 @@
 <script type="text/javascript" src="/js/app/payment/payment.js"></script>
 </head>
 <body>
-
-
-    <div>
-    <p>카카오 페이 결제 모듈 테스트 해보기</p>
-    <button id="check_module" type="button">카카오 페이 결제 모듈 테스트 해보기</button>
-</div>
-
 	
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">구독신청하기</h1>
@@ -33,7 +26,7 @@
 
 	<div class="row">
         <!-- Earnings (Monthly) Card Example -->
-        <div class="col-xl-4 col-md-6 mb-4" onclick="requestPayPremium()">
+        <div class="col-xl-4 col-md-6 mb-4" onclick="fn_payment(13900 , '프리미엄 패키지')">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -51,7 +44,7 @@
         </div>
 
         <!-- Earnings (Annual) Card Example -->
-        <div class="col-xl-4 col-md-6 mb-4" onclick="requestPayStandard()">
+        <div class="col-xl-4 col-md-6 mb-4" onclick="fn_payment(10900,  '스탠다드 패키지')">
             <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -69,7 +62,7 @@
         </div>
 
         <!-- Tasks Card Example -->
-        <div class="col-xl-4 col-md-6 mb-4" onclick="requestPayBasic()">
+        <div class="col-xl-4 col-md-6 mb-4" onclick="fn_payment(7900,'베이직 패키지')">
             <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">

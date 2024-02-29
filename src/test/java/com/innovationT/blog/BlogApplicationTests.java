@@ -13,8 +13,10 @@ import org.springframework.data.domain.Pageable;
 
 import com.innovationT.blog.Entity.Board;
 import com.innovationT.blog.Entity.Comments;
+import com.innovationT.blog.Entity.Payment;
 import com.innovationT.blog.board.repository.BoardRepository;
 import com.innovationT.blog.board.repository.CommentsRepository;
+import com.innovationT.blog.payment.repository.PaymentRepository;
 
 @SpringBootTest
 class BlogApplicationTests {
@@ -24,6 +26,9 @@ class BlogApplicationTests {
 
 	@Autowired
 	private CommentsRepository CRepo;
+	
+	@Autowired
+	private PaymentRepository PRepo;
 	
 	@Test
 	void contextLoads() {
@@ -49,7 +54,7 @@ class BlogApplicationTests {
 		}
 	}
 	
-	@Test
+	//@Test
 	void testComm() {
 		
 		
@@ -69,6 +74,26 @@ class BlogApplicationTests {
 			this.CRepo.save(c);
 		}
 
+	}
+	
+	@Test
+	void payment() {
+		
+		Payment payment = new Payment();
+		
+		payment.setMemId("boyoung");
+		payment.setApplyNum("1");
+		payment.setImpUid("1");
+		payment.setMerchantUid("1");
+		payment.setPgProvider("1");
+		payment.setPgType("1");
+		payment.setProductName("1");
+		payment.setPaidAmount(10);
+		payment.setPaidDate(LocalDateTime.now());
+		
+		this.PRepo.save(payment);
+		
+		
 	}
 	
 	
