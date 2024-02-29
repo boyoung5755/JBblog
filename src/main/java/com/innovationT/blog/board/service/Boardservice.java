@@ -58,6 +58,13 @@ public interface Boardservice {
 	 * @param commContent
 	 */
 	public void createReply(Integer commUpnum, String commContent, Integer boNo);
+
+	/**
+	 * 게시글 저장하기
+	 * @param board
+	 */
+	public void saveBoard(Board board);
+
 	
 }
 

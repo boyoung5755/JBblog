@@ -5,6 +5,8 @@
 $(function(){
   fn_commentList();
 });
+
+
 //▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶대댓글 달기▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶
 function fn_replyComment(commNo) {
     var replyForm = document.createElement('div');

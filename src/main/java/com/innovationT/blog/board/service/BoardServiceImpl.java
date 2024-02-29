@@ -64,7 +64,10 @@ public class BoardServiceImpl implements Boardservice {
 		Optional<Board> board = this.boardRepository.findById(boNo);
 		
 		if (board.isPresent()) {
-			return board.get();
+			Board  bo =   board.get();
+			bo.setBoRcnt(bo.getBoRcnt()+1);
+			this.boardRepository.save(bo);
+			return bo;
 		}else {
 			throw new DataNotFoundException("Board not found");
 		}	
@@ -125,6 +128,16 @@ public class BoardServiceImpl implements Boardservice {
 	    reply.setCommUpnum(commUpnum);
 	    reply.setCommContent(commContent);
 	    commentsRepository.save(reply);
+	}
+
+	@Override
+	public void saveBoard(Board board) {
+		
+		//로그인기능전 임시로 할당
+		board.setMemId("boyoung");
+		board.setBoDel("N");
+		board.setBoDate(LocalDateTime.now());
+		boardRepository.save(board);
 	}
 
 }

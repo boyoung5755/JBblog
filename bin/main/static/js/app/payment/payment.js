@@ -9,7 +9,7 @@ function fn_payment(amount , subOption) {
   // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
   // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
   IMP.request_pay({
-      pg: 'kakaopay', // version 1.1.0부터 지원.
+      pg: 'html5_inicis.INIpayTest', // version 1.1.0부터 지원.
       /* 
           'kakaopay':카카오페이, 
           html5_inicis':이니시스(웹표준결제)
@@ -65,8 +65,8 @@ function fn_payment(amount , subOption) {
         
           $.ajax({
         
-        type: "POST",
-              url: "/payment/savePayment",
+            type: "POST",
+            url: "/payment/savePayment",
             contentType: "application/json",
             data: JSON.stringify({
               impUid : rsp.imp_uid
