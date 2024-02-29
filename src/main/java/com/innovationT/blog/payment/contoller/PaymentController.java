@@ -31,8 +31,8 @@ public class PaymentController {
 	public Map<String, String> savePayment(@RequestBody Map<String, Object> payload){
 	    Map<String, String> map = new HashMap<>();
 	    try {
-	    	paymentService.savePayment(payload);
-	    	map.put("success", "Y");
+	    	String result = paymentService.savePayment(payload);
+	    	checkResult(result);
 	    }catch (Exception e) {
 	    	map.put("success", "N");
 		}
@@ -40,6 +40,14 @@ public class PaymentController {
 	}
 	
 	
+	public void checkResult(String result) {
+		Map<String, String> map = new HashMap<>();
+		if(result.equals("Y")) {
+    		map.put("success", "Y");
+    	}else {
+    		map.put("success", "n");
+    	}
+	}
 	
 	//결제목록 
 	@GetMapping("/listPage")
