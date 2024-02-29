@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.innovationT.blog.member.entity.Member;
 import com.innovationT.blog.member.repository.MemberRepository;
@@ -74,10 +75,13 @@ public class LoginController {
     }
     
     @PostMapping("/login/signup")
+    @ResponseBody
     public String signUp(Member member) {
+    	
+    	String result = "";
     	
     	repository.save(member);
     	
-    	return "redirect:/login/login";
+    	return "/";
     }
 }

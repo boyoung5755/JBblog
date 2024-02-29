@@ -43,7 +43,7 @@ public class MemberServiceImpl implements MemberService {
 		
 		Optional<Member> signMember = repo.findById(member.getId());
 		
-		if(!signMember.isPresent()) {  //  isEmpty() 는 java 11 버전 이후 부터  isPresent는 그 전 버전에서
+		if(!signMember.isPresent()) {
 			Member newMember = Member.builder()
 							.loginId(member.getLoginId())
 							.memPw(member.getMemPw())
