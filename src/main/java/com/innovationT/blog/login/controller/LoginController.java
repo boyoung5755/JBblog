@@ -93,7 +93,7 @@ public class LoginController {
 		
 		member.setMemInDate(formattedDate);
 		
-		Optional<Member> signMember = repo.findById(member.getId());
+		Optional<Member> signMember = repository.findById(member.getId());
 		
 		if(!signMember.isPresent()) {
 			Member newMember = Member.builder()

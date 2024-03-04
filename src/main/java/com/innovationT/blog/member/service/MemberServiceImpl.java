@@ -17,27 +17,27 @@ import com.innovationT.blog.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 
 
-@Service
-@RequiredArgsConstructor
-@Transactional
-public class MemberServiceImpl implements MemberService {
-	
-	
-	private final MemberRepository repo; 
-	
-
-	@Override
-	public ResponseEntity<Member> signup(Member member) {
-		
-
-			
-			repo.save(member);
-			
-			return new ResponseEntity("success",HttpStatus.OK);
-		}else {
-			return new ResponseEntity("fail",HttpStatus.OK); 
-		}
-		
-	}
-
-}
+//@Service
+//@RequiredArgsConstructor
+//@Transactional
+//public class MemberServiceImpl implements MemberService {
+//	
+//	
+//	private final MemberRepository repository; 
+//	
+//
+////	@Override
+////	public ResponseEntity<Member> signup(Member member) {
+//		
+//
+//			
+////		repository.save(member);
+////		if() {	
+////			return new ResponseEntity("success",HttpStatus.OK);
+////		}else {
+////			return new ResponseEntity("fail",HttpStatus.OK); 
+////		}
+//		
+//	}
+//
+//}
