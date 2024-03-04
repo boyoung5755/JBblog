@@ -5,6 +5,8 @@
 $(function(){
   fn_commentList();
 });
+
+
 //▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶대댓글 달기▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶▷▶
 function fn_replyComment(commNo) {
     var replyForm = document.createElement('div');
@@ -136,7 +138,9 @@ function fn_insertComm(){
 		success: function (data) {
 			if(data.success == "Y"){
 				alert("댓글이 등록되었습니다.")
+				document.querySelector("#commentContent").value='';
 				fn_commentList();
+				
 			}else{
 				alert("처리중 오류가 발생했습니다.")
 			}

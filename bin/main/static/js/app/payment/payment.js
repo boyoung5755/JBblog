@@ -20,6 +20,7 @@ function fn_payment(amount , subOption) {
               'payco':페이코
               'syrup':시럽페이
               'paypal':페이팔
+              html5_inicis.INIpayTest
           */
 
       pay_method: 'card',
@@ -65,8 +66,8 @@ function fn_payment(amount , subOption) {
         
           $.ajax({
         
-        type: "POST",
-              url: "/payment/savePayment",
+            type: "POST",
+            url: "/payment/savePayment",
             contentType: "application/json",
             data: JSON.stringify({
               impUid : rsp.imp_uid

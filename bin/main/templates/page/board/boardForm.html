@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}"
+      layout:fragment="content"
+>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+    <script>
+      function fn_boardInsert(){
+        var boTitle = $('#boTitle').val();
+        var boContent = $('#boContent').val();
+        $.ajax({
+
+          type : "post",
+          url : "/board/insert",
+          dataType : "json",
+          data : {
+            "boTitle" : boTitle
+            , "boContent" : boContent
+          },
+          success: function(resp){
+
+          },
+          error: function () {
+          }
+        })
+      }
+    </script> 
+
+</head>
+<body>
+	
+    <div class="card-header py-3 mb-4">
+        <h6 class="m-0 font-weight-bold text-primary">게시판 등록하기</h6>
+    </div>
+
+    <form class="container" id="boardFormData">
+      <div class="form-group">
+        <label for="title">제목</label>
+        <input type="text" class="form-control"
+            placeholder="제목을 입력하세요" name="boTitle" id="boTitle">
+      </div>
+      <div class="form-group">
+        <label for="content">내용</label>
+        <textarea class="form-control"  rows="5" 
+            placeholder="내용을 입력하세요" name="boContent" id="boContent"></textarea>
+      </div>
+      <button type="button" onclick="fn_boardInsert()" class="btn btn-primary">등록</button>
+    </form>
+</body>
+</html>

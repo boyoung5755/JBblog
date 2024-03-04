@@ -164,6 +164,27 @@ public class BoardController {
 		return map;
 	}
 	
+	//게시판 등록
+	@GetMapping("/form")
+	public String boardForm() {
+		return "page/board/boardForm";
+	}
+	
+    @PostMapping("/insert")
+    @ResponseBody
+    public Map<String, String> saveForm(
+    	@RequestParam("boTitle") String boTitle
+    	, @RequestParam("boContent") String boContent
+    	) {
+    	Map<String, String> map = new HashMap<>();
+    	Board board = new Board();
+    	board.setBoContent(boContent);
+    	board.setBoTitle(boTitle);
+    	boardservice.saveBoard(board);
+    	map.put("message", "저장이 완료되었습니다.");
+    	map.put("success", "Y");
+        return map;
+    }
 	
 
 }
