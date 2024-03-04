@@ -18,9 +18,11 @@ import com.innovationT.blog.board.repository.CommentsRepository;
 import com.innovationT.blog.utils.exception.DataNotFoundException;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class BoardServiceImpl implements Boardservice {
 	
 	private final BoardRepository boardRepository;
@@ -106,28 +108,53 @@ public class BoardServiceImpl implements Boardservice {
 
 	@Override
 	public void updateComment(Integer commNo, String commContent) {
-		Comments comment = commentsRepository.findById(commNo)
-				.orElseThrow(() -> new IllegalArgumentException("Invalid commNo:" + commNo));
-		comment.setCommContent(commContent);
-		comment.setCommDate(LocalDateTime.now());
-		commentsRepository.save(comment);
+	    try {
+	        Comments comment = commentsRepository.findById(commNo)
+	                .orElseThrow(() -> new IllegalArgumentException("Invalid commNo:" + commNo));
+	        comment.setCommContent(commContent);
+	        comment.setCommDate(LocalDateTime.now());
+	        Comments updatedComment = commentsRepository.save(comment);
+	        
+	        if (updatedComment != null && updatedComment.getCommId() != null) {
+	        	log.info("댓글이 성공적으로 수정되었습니다.");
+	        } else {
+	        	log.info("댓글 수정에 실패하였습니다.");
+	        }
+	    } catch (IllegalArgumentException e) {
+	    	log.info("잘못된 댓글 번호입니다: " + commNo);
+	        e.printStackTrace();
+	    } catch (Exception e) {
+	    	log.info("댓글 수정 중 오류가 발생했습니다.");
+	        e.printStackTrace();
+	    }
 	}
 
 	@Override
 	public void createReply(Integer commUpnum, String commContent,Integer boNo) {
-		Comments reply = new Comments();
-		
-		Board board = boardRepository.findById(boNo)
-	            .orElseThrow(() -> new IllegalArgumentException("Invalid boNo:" + boNo));
-		reply.setBoard(board);
-		
-		//로그인기능전 임시로 할당
-		reply.setCommId("boyoung");
-		
-		reply.setCommDel("N");
-	    reply.setCommUpnum(commUpnum);
-	    reply.setCommContent(commContent);
-	    commentsRepository.save(reply);
+		try {
+	        Comments reply = new Comments();
+	        
+	        Board board = boardRepository.findById(boNo)
+	                .orElseThrow(() -> new IllegalArgumentException("Invalid boNo:" + boNo));
+	        reply.setBoard(board);
+	        
+	        //로그인기능전 임시로 할당
+	        reply.setCommId("boyoung");
+	        
+	        reply.setCommDel("N");
+	        reply.setCommUpnum(commUpnum);
+	        reply.setCommContent(commContent);
+	        Comments savedReply = commentsRepository.save(reply);
+	        
+	        if (savedReply != null && savedReply.getCommId() != null) {
+	        	log.info("댓글이 성공적으로 저장되었습니다.");
+	        } else {
+	        	log.info("댓글 저장에 실패하였습니다.");
+	        }
+	    } catch (Exception e) {
+	        log.info("댓글 저장 중 오류가 발생했습니다.");
+	        e.printStackTrace();
+	    }
 	}
 
 	@Override

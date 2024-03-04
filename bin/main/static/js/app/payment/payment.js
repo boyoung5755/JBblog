@@ -9,7 +9,7 @@ function fn_payment(amount , subOption) {
   // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
   // i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
   IMP.request_pay({
-      pg: 'html5_inicis.INIpayTest', // version 1.1.0부터 지원.
+      pg: 'kakaopay', // version 1.1.0부터 지원.
       /* 
           'kakaopay':카카오페이, 
           html5_inicis':이니시스(웹표준결제)
@@ -20,6 +20,7 @@ function fn_payment(amount , subOption) {
               'payco':페이코
               'syrup':시럽페이
               'paypal':페이팔
+              html5_inicis.INIpayTest
           */
 
       pay_method: 'card',
