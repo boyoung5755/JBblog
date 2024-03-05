@@ -19,7 +19,7 @@ function connect() {
     var socket = new SockJS('/gs-guide-websocket');
     stompClient = Stomp.over(socket);
     var headers = {
-            name : "chulsoo"
+            name : "User"+getRandomNumber()
         };
     stompClient.connect(headers, function (frame) {
         setConnected(true);
@@ -29,6 +29,10 @@ function connect() {
         });
         stompClient.send("/app/enter", {}, JSON.stringify({'name': $("#name").val()}));
     });
+}
+
+function getRandomNumber() {
+    return Math.floor(Math.random() * 1000); // 0 이상 1000 미만의 랜덤한 숫자 생성
 }
 
 
