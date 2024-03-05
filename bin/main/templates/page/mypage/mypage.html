@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}"
+      layout:fragment="content"
+>
+<head>
+<meta charset="UTF-8">
+<title>마이페이지</title>
+    <!--스크립트 목록-->
+    <script type="text/javascript" th:src="@{/js/app/mypage/mypage.js}"></script>
+</head>
+<body>
+	
+	<div class="card-body">
+        <div>
+          <img src="/img/undraw_profile.svg" alt="user-avatar" class="d-block rounded" height="100"
+            width="100" id="uploadedAvatar">
+          <div onclick="fn_imagePreview()">
+            <label class="btn btn-primary mb-3 p-2 rounded" for="imageTest" >
+              Upload
+            </label>
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <input type="file" id="imageTest" name="imageTest" style="display:none;" />
+          </div>
+          <button type="button" onclick="testfn()">async연습</button>
+        </div>
+      </div>
+</body>
+
+</html>
+
