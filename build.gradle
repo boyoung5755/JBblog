@@ -24,6 +24,9 @@ dependencies {
 	//MyBatis 
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
 	
+	//JDBC
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	
 	//security
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	testImplementation 'org.springframework.security:spring-security-test'

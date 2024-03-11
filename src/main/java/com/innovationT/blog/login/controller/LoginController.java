@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.innovationT.blog.member.entity.Member;
-import com.innovationT.blog.member.repository.MemberRepository;
+import com.innovationT.blog.member.mapper.MemberMapper;
 import com.innovationT.blog.security.auth.MemberPrincipalDetails;
 
 import lombok.RequiredArgsConstructor;
@@ -28,7 +28,7 @@ import lombok.RequiredArgsConstructor;
 //@RequestMapping("/login")
 public class LoginController {
 	
-	private final MemberRepository repository;
+	private final MemberMapper repository;
 	
 	private final PasswordEncoder passwordEncoder;
 	
@@ -47,7 +47,7 @@ public class LoginController {
     	return "login/login";
     }
     
-    @GetMapping("/login/login")
+    @GetMapping("/member/login/loginForm")
     public String login(HttpServletRequest request,
                         @AuthenticationPrincipal MemberPrincipalDetails memberPrincipalDetails) {
         HttpSession session = request.getSession();
@@ -93,29 +93,29 @@ public class LoginController {
 		
 		member.setMemInDate(formattedDate);
 		
-		Optional<Member> signMember = repository.findById(member.getId());
+//		Optional<Member> signMember = repository.findById(member.getId());
 		
-		if(!signMember.isPresent()) {
-			Member newMember = Member.builder()
-							.loginId(member.getLoginId())
-							.memPw(member.getMemPw())
-							.memNm(member.getMemNm())
-							.memBirthDate(member.getMemBirthDate())
-							.memNick(member.getMemNick())
-							.memTelno(member.getMemTelno())
-							.memEmail(member.getMemEmail())
-							.memAdres1(member.getMemAdres1())
-							.memAdres2(member.getMemAdres2())
-							.memZip(member.getMemZip())
-							.memRole("MEMBER")
-							.memUsed("Y")
-							.memDel("N")
-							.memInDate(member.getMemInDate())
-							.build();
-    	
-    	repository.save(member);
-    	
-		}
+//		if(!signMember.isPresent()) {
+//			Member newMember = Member.builder()
+//							.loginId(member.getLoginId())
+//							.memPw(member.getMemPw())
+//							.memNm(member.getMemNm())
+//							.memBirthDate(member.getMemBirthDate())
+//							.memNick(member.getMemNick())
+//							.memTelno(member.getMemTelno())
+//							.memEmail(member.getMemEmail())
+//							.memAdres1(member.getMemAdres1())
+//							.memAdres2(member.getMemAdres2())
+//							.memZip(member.getMemZip())
+//							.memRole("MEMBER")
+//							.memUsed("Y")
+//							.memDel("N")
+//							.memInDate(member.getMemInDate())
+//							.build();
+//    	
+//    	repository.save(member);
+//    	
+//		}
     	return "/";
     }
 }

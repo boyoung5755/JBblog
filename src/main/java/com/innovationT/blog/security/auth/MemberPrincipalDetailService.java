@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.innovationT.blog.member.entity.Member;
-import com.innovationT.blog.member.repository.MemberRepository;
+import com.innovationT.blog.member.mapper.MemberMapper;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,12 +17,12 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberPrincipalDetailService implements UserDetailsService {
 
 	@Autowired
-	private	MemberRepository repository;
+	private	MemberMapper mapper;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
-		Member member = repository.findByLoginId(username);
+		Member member = mapper.selectUserInfo(username);
 		
 		log.info("로그인한 아이디 : {}",username);
 		log.info("로그인한 계정 정보 : {}",member);
